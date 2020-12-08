@@ -1,0 +1,92 @@
+.datePickers {
+    background: #FFFFFF;
+    padding-bottom 18px
+    .report-date-title {
+        height: 58px;
+    }
+    .scroll-wrapper {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row-reverse;
+        white-space nowrap
+        .scroll-content {
+            display: inline-block;
+        }
+        .scroll-item {
+            display: inline-block;
+            text-align: center;
+            margin 0 10px
+            div{
+                width: 32px
+                height: 30px
+                line-height: 30px
+            }
+            .date-title{
+                border-radius:8px 8px 0 0
+                border-bottom: none
+                font-size: 12px
+                color: rgba(0,0,0,0.3)
+            }
+            .date-content{
+                border-radius:0 0 8px 8px
+                font-size: 17px
+                color: rgba(0,0,0,0.8)
+                overflow hidden
+
+            }
+        }
+        
+        .active{
+            .date-title{
+                border-radius:8px 8px 0 0
+                border: none 
+            }
+            .date-content{
+                border-radius:8px
+                border: none 
+                background: #CA16FF;
+                box-shadow: 0 2px 6px 0 rgba(126,7,161,0.40);
+                color: #fff
+                overflow hidden
+            }
+        }
+        .weekly{
+            width: 94px
+           
+            div{
+                width: 94px
+            }
+            .date-title{
+                background: #ddd
+                border: 1px solid #D5D5D5;
+                color: rgba(0,0,0,0.8)
+            }
+            .date-content{
+                border: 1px solid #D5D5D5;
+                border-top: none
+                color: rgba(0,0,0,0.8)
+                font-size: 12px
+            }
+             &.active{
+                 box-shadow: 0 2px 6px 0 rgba(126,7,161,0.40);
+                 border-radius: 8px
+                .date-title{
+                    background: #CA16FF;
+                    box-shadow: 0 2px 6px 0 rgba(126,7,161,0.40);
+                    color: #fff
+                    border none
+                }
+                .date-content{
+                    border-radius:0 0 8px 8px
+                    background:#D246FB;
+                    color: #fff
+                    border none
+                    font-size: 12px
+                    overflow: hidden
+
+                }
+            }
+        }
+    }
+}
