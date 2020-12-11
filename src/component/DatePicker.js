@@ -1,27 +1,18 @@
 import React, { useRef, useState, useEffect,useContext} from 'react'
 import BScroll from '@better-scroll/core'
 import '../assets/css/datePicker.styl'
-import axios from 'axios'
-import {NumContext} from '../App'
+import { _getData, _getDateData } from '../api/serverPath'
+import {Consumer} from '../store/createContext'
+// import {NumContext} from '../App'
 function DatePicker() {
   const scroll = useRef()
   const [dateList, setDateList] = useState([])
-  const {num,setNum}=useContext(NumContext)
-  const getData = () => {
+  const {setDetailObj}=useContext(storeContext)
+  const getDateData = () => {
+    
     // 获取日期数据
-    return new Promise(() => {
-      axios
-        .post(
-          'https://www.fastmock.site/mock/348b3d6d2caee5a41791c6b57688ac48/hiyya/list',
-          { todayTime: 1606914592000 }
-        )
-        .then((res) => {
-          let dataArr=res.data.data.dataList;
-          dataArr.forEach((item,index) => {
-            if(new Date(item.date).getDay()===0){
-              dataArr.splice(index+1,0,{date:"week"})
-            }
-          });
+    _getDateData(JSON.stringify({ jid: 'user_1042275@bj2.1-1.io',token:'111111' })).then((res) => {
+          let dataArr=res.data.data;
           dataArr.forEach((item,index)=>{
             item.checked=false;
             if(index===dataArr.length - 1){
@@ -39,7 +30,7 @@ function DatePicker() {
               })
           })
         })
-    })
+   
   }
   const fliterWeek=(date)=>{
     //过滤日期
@@ -49,34 +40,70 @@ function DatePicker() {
     const arr=['Sun','Mon','Tus','Thi','Fou','Fri','Sat']
     return arr[date]
   }
+  const getData=(item)=>{
+    _getData(JSON.stringify({
+      "jid": "anchor_1007383@bj2.1-1.io",
+      "token": "vTaDu3BBEZiUukt68NSpdQ5NA1jqgWavq5TpIpKzi9xfEtJ4qnJ3dLXERq31XBIM",
+      "type": "day",
+      "value": "2020/12/3",
+  })).then(res=>{
+    setDetailObj({
+      Online_duration:res.data.Online_duration,
+      gifts:res.data.gifts,
+      host_duration:res.data.host_duration,
+      host_gifts:res.data.host_gifts,
+      in_room_duration:res.data.in_room_duration,
+      live_call_duration:res.data.live_call_duration,
+      live_call_gems:res.data.live_call_gems,
+      on_mic_duration:res.data.on_mic_duration,
+      on_mic_times:res.data.on_mic_times,
+      room_gifts:res.data.room_gifts
+    })
+  })
+  }
   // 点击选择日期
-  const handleClickDate = (index) => {
+  const handleClickDate = (index,itemData) => {
+   
     dateList.forEach((item) => {
       item.checked = false
     })
     dateList[index].checked = true
-    
     setDateList(JSON.parse(JSON.stringify(dateList)))
+    getData(itemData)
+    
+    
   }
   useEffect(() => {
+    getDateData();
     getData();
   }, [])
+  const filterNum=(n)=>{
+    if(n>9){
+      return n
+    }
+    return n
+  }
+  const fliterDate=(d)=>{
+    let month=filterNum(new Date(d.split('-')[0]).getMonth())
+    let day=filterNum(new Date(d.split('-')[0]).getDate())
+    let month1=filterNum(new Date(d.split('-')[1]).getMonth())
+    let day1=filterNum(new Date(d.split('-')[1]).getDate())
+    return `${month}/${day}-${month1}/${day1}`
+  }
   const list = dateList.map((item, index) => {
     return (
-     
       <div
-        className={`scroll-item ${item.date==='week' ? 'weekly' : ''} ${
+        className={`scroll-item ${item.type==='weekly' ? 'weekly' : ''} ${
           item.checked  ? 'active' : ''
         }`}
         onClick={() => {
-          handleClickDate(index)
+          handleClickDate(index,item.value)
         }}
         key={index}
       >
-      
-        <div className="date-title"> {item.date!=="week"?fliterWeek(new Date(item.date).getDay()):fliterWeek(8)}</div>
+        <div className="date-title"> {item.type!=="weekly"?fliterWeek(new Date(item.value).getDay()):fliterWeek(8)}</div>
         <div className="date-content">
-          {item.date==='week' ? '11/30~12/07' : new Date(item.date).getDate()}
+          {item.type==='weekly' ? fliterDate(item.value) : new Date(item.value).getDate()}
         </div>
       </div>
     )
@@ -85,8 +112,8 @@ function DatePicker() {
   return (
 
     <div className="datePickers">
-     {num}11111111111
-      <button onClick={()=>setNum(num+1)}>点击</button>
+     {/* {num}11111111111 */}
+      {/* <button onClick={()=>setNum(num+1)}>点击</button> */}
       <div className="report-date-title flex-items-center fs-16 pl-24">
         December, <span className="fc-hui6 ml-4">2020</span>
       </div>

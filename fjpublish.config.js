@@ -14,7 +14,7 @@ module.exports = {
       },
       buildCommand: "build",
       localPath: "build",
-      remotePath: "/data/www/alertPage"
+      remotePath: "/data/www/datePicker"
     }
   ]
 };
