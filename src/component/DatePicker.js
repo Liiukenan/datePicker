@@ -2,14 +2,12 @@ import React, { useRef, useState, useEffect,useContext} from 'react'
 import BScroll from '@better-scroll/core'
 import '../assets/css/datePicker.styl'
 import { _getData, _getDateData } from '../api/serverPath'
-import {Consumer} from '../store/createContext'
-// import {NumContext} from '../App'
+import {context} from "../store/index"
 function DatePicker() {
   const scroll = useRef()
   const [dateList, setDateList] = useState([])
-  const {setDetailObj}=useContext(storeContext)
+  const setDetailObj=useContext(context)[1]
   const getDateData = () => {
-    
     // 获取日期数据
     _getDateData(JSON.stringify({ jid: 'user_1042275@bj2.1-1.io',token:'111111' })).then((res) => {
           let dataArr=res.data.data;
@@ -47,18 +45,19 @@ function DatePicker() {
       "type": "day",
       "value": "2020/12/3",
   })).then(res=>{
-    setDetailObj({
-      Online_duration:res.data.Online_duration,
-      gifts:res.data.gifts,
-      host_duration:res.data.host_duration,
-      host_gifts:res.data.host_gifts,
-      in_room_duration:res.data.in_room_duration,
-      live_call_duration:res.data.live_call_duration,
-      live_call_gems:res.data.live_call_gems,
-      on_mic_duration:res.data.on_mic_duration,
-      on_mic_times:res.data.on_mic_times,
-      room_gifts:res.data.room_gifts
-    })
+    let data={
+        Online_duration:res.data.data.Online_duration,
+        gifts:res.data.data.gifts,
+        host_duration:res.data.data.host_duration,
+        host_gifts:res.data.data.host_gifts,
+        in_room_duration:res.data.data.in_room_duration,
+        live_call_duration:res.data.data.live_call_duration,
+        live_call_gems:res.data.data.live_call_gems,
+        on_mic_duration:res.data.data.on_mic_duration,
+        on_mic_times:res.data.data.on_mic_times,
+        room_gifts:res.data.data.room_gifts
+      }
+      setDetailObj(data)
   })
   }
   // 点击选择日期
@@ -76,6 +75,7 @@ function DatePicker() {
   useEffect(() => {
     getDateData();
     getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const filterNum=(n)=>{
     if(n>9){
