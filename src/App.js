@@ -5,14 +5,15 @@ import Receive from './component/Receive'
 import './assets/css/report.styl'
 import { context } from './store'
 function Details(){
-  const [detailObj, setDetailObj] = useState({})
+  let store = useState({})
   return(
-    <context.Provider value={[detailObj, setDetailObj]}>
+    <context.Provider value={store}>
       <DatePicker />
       <div className="report-main">
             <Receive />
             <DetailList />
           </div>
+    
     </context.Provider>
   )
 }

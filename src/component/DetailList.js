@@ -3,11 +3,12 @@ import '../assets/css/detailList.styl'
 import { context } from '../store'
 function DetailList() {
   const detailObj = useContext(context)[0]
+  
   return (
       <div className="detailList">
         <div className="title flex-items-center">
           <img src={require('../assets/images/ic_data.png')} alt="" />
-          <span className="fs-16">Data detail</span>
+          <span className="fs-16"> Data detail</span>
         </div>
         <div className="list fs-16">
           <div className="ml-24 mr-24 flex-between flex-items-center">
