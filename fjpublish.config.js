@@ -12,7 +12,7 @@ module.exports = {
           "/Users/liukenan/.ssh/id_rsa"
         ) //mac用户举例
       },
-      buildCommand: "build",
+      buildCommand: "build-test",
       localPath: "build",
       remotePath: "/data/www/datePicker"
     }

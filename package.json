@@ -79,8 +79,8 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build-test": "cross-env CMDEFINE_ENV=dev node scripts/build.js",
-    "build": "cross-env CMDEFINE_ENV=production node scripts/build.js",
+    "build-test": "cross-env CMLINT_ENV=development node scripts/build.js",
+    "build": "cross-env CMLINT_ENV=production node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

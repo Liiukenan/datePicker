@@ -1,5 +1,5 @@
 import axios from 'axios'
-if(process.env.CMDEFINE_ENV === 'production'){
+if(process.env.CMLINT_ENV === 'production'){
     axios.defaults.baseURL='http://www.baidusssss.com/'
 }else{
     axios.defaults.baseURL='http://54.223.205.242:8300/'
