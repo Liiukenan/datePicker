@@ -15,7 +15,7 @@ function Receive() {
         </div>
         <div className="number mt-8 flex-items-center flex-justify-center">
           <img src={require('../assets/images/ic_gems_money.png')} alt="" />
-          <span className="ml-6">921</span>
+          <span className="ml-6">{detailObj.total_gems_received}</span>
         </div>
         <div className="receive-list mt-20">
           <div className="list-data flex-between flex-items-center">
@@ -37,7 +37,7 @@ function Receive() {
             <span className="fs-16 fc-hui6">Host room gifts</span>
             <span className="fs-15 flex-items-center">
               <img src={require('../assets/images/ic_gems_money.png')} alt="" />
-              <i className="ml-2">{detailObj.host_room_gifts}</i>
+              <i className="ml-2">{detailObj.room_gifts}</i>
             </span>
           </div>
           <div className="list-data flex-between flex-items-center">

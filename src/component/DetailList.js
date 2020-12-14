@@ -3,7 +3,6 @@ import '../assets/css/detailList.styl'
 import { context } from '../store'
 function DetailList() {
   const detailObj = useContext(context)[0]
-  
   return (
       <div className="detailList">
         <div className="title flex-items-center">

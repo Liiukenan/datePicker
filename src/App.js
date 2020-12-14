@@ -6,6 +6,7 @@ import './assets/css/report.styl'
 import { context } from './store'
 function Details(){
   let store = useState({})
+  console.log(process.env)
   return(
     <context.Provider value={store}>
       <DatePicker />

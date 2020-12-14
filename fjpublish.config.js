@@ -2,7 +2,7 @@ module.exports = {
   modules: [
     {
       name: "测试环境",
-      env: "build",
+      env: "test",
       ssh: {
         host: "54.222.180.211",
         username: "ubuntu",

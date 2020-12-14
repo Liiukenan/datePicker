@@ -22,6 +22,7 @@
     "bfj": "^7.0.2",
     "camelcase": "^6.1.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
+    "cross-env": "^7.0.3",
     "css-loader": "4.3.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
@@ -78,7 +79,8 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build-test": "cross-env CMDEFINE_ENV=dev node scripts/build.js",
+    "build": "cross-env CMDEFINE_ENV=production node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
