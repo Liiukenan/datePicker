@@ -77,18 +77,31 @@ function DatePicker() {
           value: item.value
         })
       ).then((res) => {
+        // let data = {
+        //   total_gems_received: res.data.data.total_gems_received || 0,
+        //   online_duration: res.data.data.online_duration || 20,
+        //   gifts: res.data.data.gifts || 20,
+        //   host_duration: res.data.data.host_duration || 30,
+        //   host_gifts: res.data.data.host_gifts || 35,
+        //   in_room_duration: res.data.data.in_room_duration || 40,
+        //   live_call_duration: res.data.data.live_call_duration || 45,
+        //   live_call_gems: res.data.data.live_call_gems || 20,
+        //   on_mic_duration: res.data.data.on_mic_duration || 25,
+        //   on_mic_times: res.data.data.on_mic_times || 15,
+        //   room_gifts: res.data.data.room_gifts || 10
+        // }
         let data = {
-          total_gems_received: res.data.data.total_gems_received,
-          online_duration: res.data.data.online_duration,
-          gifts: res.data.data.gifts,
-          host_duration: res.data.data.host_duration,
-          host_gifts: res.data.data.host_gifts,
-          in_room_duration: res.data.data.in_room_duration,
-          live_call_duration: res.data.data.live_call_duration,
-          live_call_gems: res.data.data.live_call_gems,
-          on_mic_duration: res.data.data.on_mic_duration,
-          on_mic_times: res.data.data.on_mic_times,
-          room_gifts: res.data.data.room_gifts
+          total_gems_received: 0,
+          online_duration:  20,
+          gifts: 20,
+          host_duration: 30,
+          host_gifts: 35,
+          in_room_duration: 40,
+          live_call_duration: 45,
+          live_call_gems: 20,
+          on_mic_duration: 25,
+          on_mic_times: 15,
+          room_gifts: 10
         }
         // 设置全局化数据
         setDetailObj(data)
