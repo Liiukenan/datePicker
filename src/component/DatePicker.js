@@ -91,7 +91,7 @@ function DatePicker() {
         //   room_gifts: res.data.data.room_gifts || 10
         // }
         let data = {
-          total_gems_received: 0,
+          total_gems_received: 20,
           online_duration:  20,
           gifts: 20,
           host_duration: 30,
