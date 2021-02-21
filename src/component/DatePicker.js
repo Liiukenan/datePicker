@@ -189,7 +189,7 @@ function DatePicker() {
   return (
     <div className="datePickers">
       <div className="report-date-title flex-items-center fs-16 pl-24">
-        {topDateArr[0]}, <span className="fc-hui6 ml-4">{topDateArr[1]}1</span>
+        {topDateArr[0]}, <span className="fc-hui6 ml-4">{topDateArr[1]}</span>
       </div>
       <div className="scroll-wrapper" ref={scroll}>
         <div className="scroll-content fs-12">{list}</div>
